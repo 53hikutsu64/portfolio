@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>KOTANI's | PORTFOLIO</title>
+	<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+</head>
+
+<body class="light-mode">
+
+
+
+	<div id="loading-screen" class="loading-screen">
+		<div class="loading-inner">
+			<div class="loading-header">
+				<span class="loading-text">LOADING...</span>
+				<span id="loading-perc" class="loading-perc">0%</span>
+			</div>
+			<div class="loading-bar-container">
+				<div id="loading-bar-fill" class="loading-bar-fill"></div>
+				<span class="loading-inner-text">Thank you for watching my portfolio.</span>
+			</div>
+		</div>
+	</div>
+
+	<div id="visual-frame" class="visual-frame"></div>
+
+	<div id="site-wrapper" class="site-wrapper">
+
+		<header class="header" id="top">
+			<div class="header-left">
+				<h1 class="logo">KOTANI</h1>
+				<div class="ticker-ribbon">
+					<div class="ticker-track">
+						<span>WELCOME TO PORTFOLIO!! </span>
+						<span>WELCOME TO PORTFOLIO!! </span>
+					</div>
+				</div>
+			</div>
+			<button id="mode-toggle" class="btn-retro">DARK MODE</button>
+		</header>
+
+
+		<nav class="floating-nav">
+			<ul class="nav-list">
+				<li><a href="#top" class="nav-item active">TOP</a></li>
+				<li><a href="#profile" class="nav-item">PROFILE</a></li>
+				<li><a href="#works" class="nav-item">WORKS</a></li>
+				<li><a href="#skills" class="nav-item">SKILLS</a></li>
+				<li><a href="#contact" class="nav-item">CONTACT</a></li>
+				<li><button id="nav-mode-toggle" class="nav-item mode-toggle-icon">🌙</button></li>
+			</ul>
+		</nav>
+
+
+		
+<main class="bento-wrapper">
+    <div class="bento-grid">
+        <a href="#profile" class="bento-item profile" data-gsap="hover" style="text-decoration: none;">
+            <div class="content">
+                <span class="label">ABOUT ME</span>
+                <h2>SYUNSUKE KOTANI</h2>
+                <p></p>
+            </div>
+        </a>
+
+        <a href="#works" class="bento-item work-main" data-gsap="hover" style="text-decoration: none;">
+            <div class="temp-text">WORKS</div> <div class="overlay">
+                <span class="label">LATEST WORK</span>
+                <h3>制作実績はこちら</h3>
+            </div>
+        </a>
+
+        <a href="#skills" class="bento-item skills" data-gsap="hover" style="text-decoration: none;">
+            <span class="label">SKILLS</span>
+            <div class="temp-text">SKILLS</div> <div class="skill-icons">
+                 </div>
+        </a>
+
+        <a href="#contact" class="bento-item mini-box" data-gsap="hover" style="text-decoration: none;">
+            <img src="img/soorry.webp" alt="Dummy">
+            <span class="label" style="position:absolute; bottom:15px; left:15px;">CONTACT</span>
+        </a>
+    </div>
+</main>
+
+
+
+
+		<section class="about-section" id="profile">
+			<div class="about-container">
+				<div class="about-visual">
+					<div class="pixel-frame">
+						<img class="img-default" src="img/face/ぴくせるひくちゃん.png" alt="Profile Image">
+						<img class="img-hover" src="img/face/ういんくぴくちゃんゃん.png" alt="Profile Hover">
+					</div>
+					<div class="status-tag">53taikutsu64</div>
+				</div>
+
+				<div class="about-content">
+					<span class="label">IDENTITY</span>
+					<h2 class="about-name">SYUNSUKE KOTANI</h2>
+					<p class="about-bio">
+						東京(郊外)生まれ東京(郊外)育ち。<br>年8月より職業訓練校にてWebデザインやコーディングについて学ぶ。
+						z
+					</p>
+					<div class="about-details">
+						<a href="about-detail.html" class="btn-retro view-more-btn">- VIEW MORE -</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
+
+		<section class="works-staff-wrapper" id="works">
+			<div class="staff-lines">
+				<span></span><span></span><span></span><span></span><span></span><span></span>
+			</div>
+
+			<div class="lane-texts-container">
+				<div class="lane-text t1" data-speed="0.2">
+					<span class="arrow a1">☛</span>
+					<span class="arrow a2">→</span>
+					<span class="arrow a3">☛</span>
+					<span class="arrow a4">→</span>
+					THANK YOU FOR WATCHING THANK YOU FOR WATCHING THANK YOU FOR
+					WATCHING THANK YOU FOR WATCHING THANK YOU FOR WATCHING
+				</div>
+				<div class="lane-text t2" data-speed="0.5">WORKS WORKS WORKS WORKS WORKS WORKS WORKS WORKS WORKS WORKS
+					WORKS WORKS WORKS WORKS WORKS WORKS WORKS WORKS WORKS WORKS</div>
+				<div class="lane-text t3" data-speed="0.3">
+					<span class="arrow a1">→</span>
+					<span class="arrow a2">☛</span>
+					<span class="arrow a3">→</span>
+					<span class="arrow a4">☛</span> CLICK CLICK CLICK CLICK CLICK CLICK CLICK CLICK CLICK CLICK CLICK
+					CLICK CLICK CLICK CLICK CLICK CLICK CLICK CLICK CLICK CLICK CLICK CLICK CLICK CLICK
+				</div>
+				<div class="lane-text t4" data-speed="0.6">WORKS WORKS WORKS WORKS WORKS WORKS WORKS WORKS WORKS WORKS
+					WORKS WORKS WORKS WORKS WORKS WORKS WORKS WORKS WORKS WORKS</div>
+				<div class="lane-text t5" data-speed="0.4">
+					<span class="arrow a1">☛</span>
+					<span class="arrow a2">→</span>
+					<span class="arrow a3">☛</span>
+					<span class="arrow a4">→</span>
+					THANK YOU FOR WATCHING THANK YOU FOR WATCHING THANK YOU FOR
+					WATCHING THANK YOU FOR WATCHING THANK YOU FOR WATCHING
+				</div>
+			</div>
+
+			<div class="staff-container">
+				<div class="staff-track">
+
+					<!-- data-case-url="VITABIBE-detail.html" data-site-url="https://example.com/vitavibe" -->
+					<div class="work-item h-300 row-2" data-title="VITA VIBE (Website)"
+						
+						data-desc="架空の飲料を題材に、ペルソナを設定し、画像等の素材を含めAIでの画像生成も利用しつつ0から構築し、様々なアニメーションをふんだんに使った <br>「VITA VIBE」<br> のブランドサイトです。"
+						data-tech="HTML / JavaScript / GSAP / SCSS / Illustrator / Photoshop" data-gsap="hover">
+						<div class="work-img">
+							<video src="img/works/vitavibe.webm" autoplay muted loop playsinline class="work-video">
+						</div>
+					</div>
+
+					<!-- <div class="work-item h-100 row-4" data-gsap="hover" data-title="SnowScoop (Banner)" data-desc="架空のアイス屋さんのバナーです。" data-tech="Illustrator / Photoshop">
+						<div class="work-img"><img src="img/works/icecream.webp" alt="Work">
+						</div>
+					</div> -->
+
+
+
+					<!-- data-case-url="weather-detail.html" -->
+					<div class="work-item h-300 row-2" data-title="World Weather (Website)"
+						 data-tech="HTML / JavaScript / CSS / Illustrator"
+						data-site-url="https://53hikutsu64.github.io/weather/"
+						data-desc="APIを利用したお天気ジェネレーターアプリです。<br>世界の都市を入力すれば、その土地の天気の様子がアニメーションとデータで表示されます。<br>右下の設定アイコンで天候のシュミレートもできます。<br>"
+						data-tech="HTML / SCSS / GSAP" data-gsap="hover">
+						<div class="work-img"><img src="img/works/world-weather.webp" alt="Work">
+						</div>
+					</div>
+
+					<div class="work-item h-200 row-2" data-gsap="hover" data-title="フィンランドマルシェ (Banner)"
+						data-desc="架空のフィンランドの物産展のバナーです。" data-tech="Illustrator / Photoshop">
+						<div class="work-img"><img src="img/works/finland.webp" alt="Work">
+						</div>
+					</div>
+
+
+
+					<!-- data-case-url="gacha-detail.html" -->
+					<div class="work-item h-200 row-3" data-title="3連ガチャ(Website)" 
+						data-site-url="https://53hikutsu64.github.io/gacha/"
+						data-desc="JavaScriptをつかって3連ガチャを作りました。<br>レア度の高いカードには些細なアニメーションがついています。<br>カードにホバーすると表示される解説モーダルの出現位置等、UIについても工夫をこらしました。"
+						data-desc="   " data-tech="HTML / JavaScript / CSS / Illustrator / Photoshop" data-gsap="hover">
+						<div class="work-img"><video src="img/works/gacha.webm" autoplay muted loop playsinline
+								class="work-video">
+							</video></div>
+					</div>
+
+					<div class="work-item h-100 row-3" data-gsap="hover" data-title="Banner"
+						data-desc="架空の家具販売イベントののバナーです。" data-tech="Illustrator / Photoshop">
+						<div class="work-img"><img src="img/works/furniture.webp" alt="Work">
+						</div>
+					</div>
+
+					<div class="work-item h-200 row-2" data-gsap="hover" data-title="SnowScoop (Banner)"
+						data-desc="架空のアイス屋さんのバナーです。" data-tech="Illustrator / Photoshop">
+						<div class="work-img"><img src="img/works/icecream.webp" alt="Work">
+						</div>
+					</div>
+
+					<div class="work-item h-500 row-1 finish-box" id="last-item">
+						<p>
+							<span>That's it!</span>
+							<span class="arrow-row">
+								<span class="char a1">↓</span>
+								<span class="char a2">⇩</span>
+								<span class="char a3">↓</span>
+							</span>
+							<span class="arrow-row">
+								<span class="char a4">⇩</span>
+								<span class="char a5">↓</span>
+								<span class="char a6">⇩</span>
+							</span>
+							<span class="arrow-row">
+								<span class="char a7">↓</span>
+								<span class="char a8">⇩</span>
+								<span class="char a9">↓</span>
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</section>
+
+
+		<div id="modal-overlay" class="modal-overlay">
+			<div class="modal-window">
+				<button id="modal-close" class="modal-close-btn">X</button>
+
+				<div class="modal-inner">
+					<div id="modal-image-area" class="modal-img">
+					</div>
+					<div class="modal-text">
+						<span id="modal-label" class="label">PROJECT DETAIL</span>
+						<h2 id="modal-title">WORK TITLE</h2>
+						<p id="modal-desc">ここに説明が入るぞ！</p>
+
+						<div class="modal-footer">
+							<span id="modal-tech" class="tech-stack">HTML / SCSS / JavaScript</span>
+
+							<div class="modal-btns">
+								<a href="#" id="modal-site-link" class="btn-retro site-link-btn" target="_blank">VIEW
+									SITE</a>
+								<a href="#" id="modal-case-link" class="btn-retro case-study-btn">CASE STUDY</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<section class="skills-section" id="skills">
+			<div class="container">
+				<span class="label">POWER & TOOLS</span>
+				<h2 class="section-title">WHAT I CAN DO</h2>
+				<div class="skills-list">
+					<div class="skill-card" data-gsap="hover">
+						<h3>DESIGN</h3>
+						<p>Photoshop / Illustrator </p>
+						<span class="detail">世界観の構築と素材制作が得意です！</span>
+					</div>
+					<div class="skill-card" data-gsap="hover">
+						<h3>DEVELOP</h3>
+						<p>VScode/ HTML / SCSS / JavaScript / GSAP / jQuery</p>
+						<span class="detail">動きのあるインタラクティブなサイトを作ります！</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="contact-section" id="contact">
+			<div class="container">
+				<div class="contact-box">
+					<span class="label">お問い合わせ</span>
+					<h2 class="contact-title">CONTACT</h2>
+					<p class="email-address">53taikutsu64@gmail.com</p>
+					<p class="contact-sub">上記アドレスへメールにて ご連絡ください。</p>
+					<a href="mailto:your-email@example.com" class="btn-retro contact-btn">SEND EMAIL</a>
+				</div>
+			</div>
+		</section>
+
+		<footer class="footer">
+			<div class="footer-inner">
+				<p class="copyright">
+					&copy; 2026 SYUNSUKE KOTANI. <br class="sp-br">ALL RIGHTS RESERVED.
+				</p>
+				<div class="footer-logo">KOTANI_PORTFOLIO</div>
+			</div>
+		</footer>
+	</div>
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>
