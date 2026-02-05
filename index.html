@@ -60,36 +60,75 @@
 		</nav>
 
 
-		
-<main class="bento-wrapper">
-    <div class="bento-grid">
-        <a href="#profile" class="bento-item profile" data-gsap="hover" style="text-decoration: none;">
-            <div class="content">
-                <span class="label">ABOUT ME</span>
-                <h2>SYUNSUKE KOTANI</h2>
-                <p></p>
+
+		<main class="bento-wrapper">
+			<div class="bento-grid">
+				<a href="#profile" class="bento-item profile" data-gsap="hover" style="text-decoration: none;">
+					<div class="content">
+						<span class="label">ABOUT ME</span>
+						<h2>SYUNSUKE KOTANI</h2>
+						<p></p>
+					</div>
+				</a>
+
+				<a href="#works" class="bento-item work-main" id="bento-tv" data-gsap="hover">
+					<div class="tv-screen">
+						<div id="tv-content"></div>
+
+						<div class="tv-noise"></div>
+						<div class="tv-scanlines"></div>
+					</div>
+					<div class="overlay">
+						<span class="label">WORKS</span>
+						<h3 id="tv-title">WORKS</h3>
+					</div>
+				</a>
+<a href="#skills" class="bento-item skills" data-gsap="hover" style="text-decoration: none;">
+    <span class="label">SKILLS</span>
+
+    <div class="skill-main">
+        <div class="skill-list">
+            
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="name">DESIGN</span>
+                    <span class="value">90%</span>
+                </div>
+                <div class="bar-bg">
+                    <div class="bar" data-level="90%"></div>
+                </div>
             </div>
-        </a>
 
-        <a href="#works" class="bento-item work-main" data-gsap="hover" style="text-decoration: none;">
-            <div class="temp-text">WORKS</div> <div class="overlay">
-                <span class="label">LATEST WORK</span>
-                <h3>制作実績はこちら</h3>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="name">CODING</span>
+                    <span class="value">85%</span>
+                </div>
+                <div class="bar-bg">
+                    <div class="bar" data-level="85%"></div>
+                </div>
             </div>
-        </a>
 
-        <a href="#skills" class="bento-item skills" data-gsap="hover" style="text-decoration: none;">
-            <span class="label">SKILLS</span>
-            <div class="temp-text">SKILLS</div> <div class="skill-icons">
-                 </div>
-        </a>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="name">GRAPHIC</span>
+                    <span class="value">95%</span>
+                </div>
+                <div class="bar-bg">
+                    <div class="bar" data-level="95%"></div>
+                </div>
+            </div>
 
-        <a href="#contact" class="bento-item mini-box" data-gsap="hover" style="text-decoration: none;">
-            <img src="img/soorry.webp" alt="Dummy">
-            <span class="label" style="position:absolute; bottom:15px; left:15px;">CONTACT</span>
-        </a>
+        </div>
     </div>
-</main>
+</a>
+
+				<a href="#contact" class="bento-item mini-box" data-gsap="hover" style="text-decoration: none;">
+					<img src="img/soorry.webp" alt="Dummy">
+					<span class="label" style="position:absolute; bottom:15px; left:15px;">CONTACT</span>
+				</a>
+			</div>
+		</main>
 
 
 
@@ -162,7 +201,6 @@
 
 					<!-- data-case-url="VITABIBE-detail.html" data-site-url="https://example.com/vitavibe" -->
 					<div class="work-item h-300 row-2" data-title="VITA VIBE (Website)"
-						
 						data-desc="架空の飲料を題材に、ペルソナを設定し、画像等の素材を含めAIでの画像生成も利用しつつ0から構築し、様々なアニメーションをふんだんに使った <br>「VITA VIBE」<br> のブランドサイトです。"
 						data-tech="HTML / JavaScript / GSAP / SCSS / Illustrator / Photoshop" data-gsap="hover">
 						<div class="work-img">
@@ -179,7 +217,7 @@
 
 					<!-- data-case-url="weather-detail.html" -->
 					<div class="work-item h-300 row-2" data-title="World Weather (Website)"
-						 data-tech="HTML / JavaScript / CSS / Illustrator"
+						data-tech="HTML / JavaScript / CSS / Illustrator"
 						data-site-url="https://53hikutsu64.github.io/weather/"
 						data-desc="APIを利用したお天気ジェネレーターアプリです。<br>世界の都市を入力すれば、その土地の天気の様子がアニメーションとデータで表示されます。<br>右下の設定アイコンで天候のシュミレートもできます。<br>"
 						data-tech="HTML / SCSS / GSAP" data-gsap="hover">
@@ -196,7 +234,7 @@
 
 
 					<!-- data-case-url="gacha-detail.html" -->
-					<div class="work-item h-200 row-3" data-title="3連ガチャ(Website)" 
+					<div class="work-item h-200 row-3" data-title="3連ガチャ(Website)"
 						data-site-url="https://53hikutsu64.github.io/gacha/"
 						data-desc="JavaScriptをつかって3連ガチャを作りました。<br>レア度の高いカードには些細なアニメーションがついています。<br>カードにホバーすると表示される解説モーダルの出現位置等、UIについても工夫をこらしました。"
 						data-desc="   " data-tech="HTML / JavaScript / CSS / Illustrator / Photoshop" data-gsap="hover">

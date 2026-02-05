@@ -229,7 +229,7 @@
 		position: fixed;
 		top: 20px;
 		left: 50%;
-		transform: translateX(-50%) translateY(20px); 
+		transform: translateX(-50%) translateY(20px);
 		z-index: 3000;
 
 		background-color: var(--bg);
@@ -258,8 +258,8 @@
 			font-weight: bold;
 
 			&.active {
-				background-color: var(--text); 
-				color: var(--bg); 
+				background-color: var(--text);
+				color: var(--bg);
 			}
 		}
 
@@ -290,7 +290,7 @@
 	}
 
 
-	// --------------------------------------------------
+	// ---------------------hero----------------------------------------------------------
 	.bento-wrapper {
 		padding: 20px;
 		max-width: 1200px;
@@ -326,7 +326,7 @@
 			}
 
 			.label {
-				font-size: 12px;
+				font-size: 17px;
 				text-decoration: underline;
 			}
 
@@ -356,7 +356,7 @@
 		}
 	}
 
-	
+
 	.btn-retro {
 		background: var(--text);
 		color: var(--bg);
@@ -368,6 +368,197 @@
 			filter: invert(1);
 		}
 	}
+
+
+	//-------------------------bento-work------------------------------------------------------
+
+
+.tv-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+    background: #000;
+    border-radius: 5px;
+    border: 5px solid #000;
+
+    // ヴィネット
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: radial-gradient(circle, rgba(0, 0, 0, 0) 60%, rgb(0, 0, 0) 100%);
+        pointer-events: none;
+        z-index: 4; 
+    }
+
+    #tv-content {
+        position: relative;
+        z-index: 1; 
+        width: 100%;
+        height: 100%;
+
+        img, video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: auto; 
+            position: absolute;
+            top: 0; left: 0;
+        }
+    }
+
+    // しましま
+    .tv-scanlines {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+        background-size: 100% 4px, 3px 100%;
+        pointer-events: none;
+
+        z-index: 10; 
+
+        animation: scanline-scroll 10s linear infinite;
+    }
+	@keyframes scanline-scroll {
+			from {
+				background-position: 0 0;
+			}
+
+			to {
+				background-position: 0 100%;
+			}
+		}
+
+    // 砂嵐-----------------------------------
+    .tv-noise {
+			position: absolute;
+			top: -50%;
+			left: -50%;
+			width: 200%;
+			height: 200%;
+			background: repeating-radial-gradient(#000 0 0.0001%, #fff 0 0.0002%) 50% 0/2500px 2500px,
+				repeating-conic-gradient(#000 0 0.0001%, #fff 0 0.0002%) 50% 50%/2500px 2500px;
+			background-blend-mode: difference;
+			opacity: 0;
+			pointer-events: none;
+			z-index: 5;
+
+			&.is-active {
+				opacity: 0.4;
+				animation: noise-anim 0.05s infinite;
+			}
+		}
+
+		@keyframes noise-anim {
+			0% {
+				transform: translate(0, 0)
+			}
+
+			10% {
+				transform: translate(-5%, -5%)
+			}
+
+			20% {
+				transform: translate(-10%, 5%)
+			}
+
+			30% {
+				transform: translate(5%, -10%)
+			}
+
+			40% {
+				transform: translate(-5%, 15%)
+			}
+
+			50% {
+				transform: translate(-10%, 5%)
+			}
+
+			60% {
+				transform: translate(15%, 0)
+			}
+
+			70% {
+				transform: translate(0, 10%)
+			}
+
+			80% {
+				transform: translate(-15%, 0)
+			}
+
+			90% {
+				transform: translate(10%, 5%)
+			}
+
+			100% {
+				transform: translate(5%, 0)
+			}
+		}
+	z-index: 5; 
+    }
+
+	// ------------bento-skill--------------------------------------------
+
+.bento-item.skills {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--bar-bg);
+    text-decoration: none;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    
+    height: 100%; 
+    box-sizing: border-box;
+
+    .skill-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        box-sizing: border-box;
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .skill-item {
+            .skill-header {
+                display: flex;
+                justify-content: space-between;
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 0.75rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .bar-bg {
+                width: 100%;
+                height: 4px;
+                background: var(--bar-bg);
+                position: relative;
+                overflow: hidden;
+
+                .bar {
+                    height: 100%;
+                    background: var(--text); 
+                    width: 0%; 
+                    box-shadow: 0 0 8px var(--text);
+                }
+            }
+        }
+    }
+}
 
 
 	// ------------------------about me---------------------------------------------
@@ -484,7 +675,7 @@
 		}
 
 		@include sp {
-			justify-content: center; 
+			justify-content: center;
 
 			.view-more-btn {
 				width: 100%;
@@ -714,14 +905,14 @@
 		// --- レスポンシブ -----------------------
 		@include sp {
 
-			
+
 			.staff-container {
 				height: 500px;
 				top: 50%;
 				transform: translateY(-50%);
 			}
 
-			
+
 			.work-item {
 				&:not(.finish-box) {
 
@@ -738,7 +929,7 @@
 					}
 
 					.work-img {
-						border: none !important; 
+						border: none !important;
 						background: none !important;
 					}
 				}
@@ -759,7 +950,7 @@
 				}
 			}
 
-			
+
 			.staff-track {
 				padding-left: 100vw;
 				padding-right: 50vw;
@@ -917,47 +1108,49 @@
 
 
 	#modal-desc {
-    max-height: 150px; 
-    
-    overflow-y: auto;
-    
-    padding-right: 15px;
-    
-    white-space: pre-wrap; 
-    line-height: 1.6;
-    margin-bottom: 20px;
+		max-height: 150px;
 
-    &::-webkit-scrollbar {
-        width: 6px;
-    }
-    &::-webkit-scrollbar-track {
-        background: var(--bg);
-    }
-    &::-webkit-scrollbar-thumb {
-        background: var(--text);
-        border-radius: 3px;
-    }
-}
+		overflow-y: auto;
+
+		padding-right: 15px;
+
+		white-space: pre-wrap;
+		line-height: 1.6;
+		margin-bottom: 20px;
+
+		&::-webkit-scrollbar {
+			width: 6px;
+		}
+
+		&::-webkit-scrollbar-track {
+			background: var(--bg);
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background: var(--text);
+			border-radius: 3px;
+		}
+	}
 
 
 	.modal-footer {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: flex-start;
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		align-items: flex-start;
 
-    .modal-btns {
-        display: flex;
-        gap: 10px; 
-    }
+		.modal-btns {
+			display: flex;
+			gap: 10px;
+		}
 
-    .site-link-btn {
-        background-color: var(--accent);
-        color: #000;
-        border: 2px solid var(--text);
+		.site-link-btn {
+			background-color: var(--accent);
+			color: #000;
+			border: 2px solid var(--text);
 
-    }
-}
+		}
+	}
 
 
 	/* タイピングカーソル*/
@@ -1030,7 +1223,7 @@
 			}
 
 			.skill-card {
-				padding: 20px; 
+				padding: 20px;
 
 				h3 {
 					font-size: 20px;
@@ -1074,10 +1267,11 @@
 
 			.contact-box {
 				.contact-title {
-					font-size: 36px; 				}
+					font-size: 36px;
+				}
 
 				.email-address {
-					font-size: 16px; 
+					font-size: 16px;
 					word-wrap: break-word;
 				}
 
@@ -1103,8 +1297,8 @@
 			max-width: 1200px;
 			margin: 0 auto;
 			display: flex;
-			flex-direction: column; 
-			align-items: center; 
+			flex-direction: column;
+			align-items: center;
 			position: relative;
 		}
 
@@ -1123,7 +1317,7 @@
 		}
 
 		.footer-logo {
-			align-self: flex-end; 
+			align-self: flex-end;
 			margin-top: 20px;
 			font-weight: bold;
 			letter-spacing: 2px;
@@ -1151,28 +1345,64 @@
 
 	// ------------------------------応急措置たち～～～-----------------------------------------------
 	.bento-item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    
-    
-    .temp-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 48px; 
-        font-weight: bold;
-        opacity: 0.3;
-        pointer-events: none; 
+		position: relative;
+		display: flex;
+		flex-direction: column;
 
-        @include sp {
-            font-size: 32px; 
-        }
-    }
 
-    &.profile, &.work-main, &.skills, &.mini-box {
-        text-decoration: none;
-        color: var(--text);
-    }
-}
+		.temp-text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 48px;
+			font-weight: bold;
+			opacity: 0.3;
+			pointer-events: none;
+
+			@include sp {
+				font-size: 32px;
+			}
+		}
+
+		&.profile,
+		&.work-main,
+		&.skills,
+		&.mini-box {
+			text-decoration: none;
+			color: var(--text);
+		}
+	}
+
+	// -----------------------メディアクエリの微調整--------------------------------------------------
+
+
+	@include sp {
+		.works-staff-wrapper {
+			height: 60vh !important;
+		}
+
+		.staff-track {
+			display: flex;
+			gap: 80px;
+			padding: 0 5vw;
+		}
+
+		.work-item {
+			flex-shrink: 0;
+			width: auto;
+			height: auto;
+
+			// aspect-ratio: ;
+
+
+
+			img,
+			video {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+
+			}
+		}
+	}

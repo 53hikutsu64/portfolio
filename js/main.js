@@ -42,6 +42,7 @@ loadingTl.to(["#visual-frame", "#site-wrapper"], {
 	},
 	onComplete: () => {
 		if (typeof runBentoShuffle === "function") runBentoShuffle();
+		ScrollTrigger.refresh();
 	}
 });
 // --- 1. ダークモードライトモード ---
@@ -78,7 +79,163 @@ if (navModeToggle) navModeToggle.addEventListener('click', toggleMode);
 
 window.addEventListener('load', updateModeUI);
 
-// --- 2. ホバーアニメーション ---
+
+// --- 1.5 BENTO works-----------------------------------------------------------------------
+const bentoWorks = [
+    { type: 'video', src: 'img/works/vitavibe.webm', title: 'VITA VIBE' },
+	{ type: 'img', src: 'img/works/icecream.webp', title: 'BANNER' },
+    { type: 'img', src: 'img/works/world-weather.webp', title: 'WORLD WEATHER' , targetId: '#work-lp',isBanner: true},
+	{ type: 'img', src: 'img/works/finland.webp', title: 'BANNER', targetId: '#work-lp',isBanner: true },
+    { type: 'video', src: 'img/works/gacha.webm', title: '3 GACHA' },
+	{ type: 'img', src: 'img/works/furniture.webp', title: 'BANNER', targetId: '#work-lp', isBanner: true},
+
+];
+
+
+let currentIndex = 0;
+const tvContent = document.getElementById('tv-content');
+const tvNoise = document.querySelector('.tv-noise');
+const tvTitle = document.getElementById('tv-title');
+
+const updateBentoTV = () => {
+    const tvScreen = document.querySelector('.tv-screen'); // 揺らす対象
+    const tvNoise = document.querySelector('.tv-noise');
+
+    //切り替わりの瞬間にグリッチ（揺れ
+    gsap.fromTo(tvScreen, 
+        { x: 2, skewX: 0 }, // 開始
+        { 
+            x: 0, skewX: 0, // 終了
+            duration: 0.05, 
+            repeat: 5,
+            yoyo: true, 
+            ease: "rough",
+            onStart: () => {
+                tvNoise.classList.add('is-active'); // ノイズ開始
+            }
+        }
+    );
+
+    setTimeout(() => {
+        const work = bentoWorks[currentIndex];
+        tvContent.innerHTML = ''; 
+
+        if (work.type === 'video') {
+            tvContent.innerHTML = `<video src="${work.src}" autoplay muted loop playsinline></video>`;
+        } else {
+            
+            const imgClass = work.isBanner ? 'banner-img' : 'standard-img';
+            tvContent.innerHTML = `<img src="${work.src}" alt="${work.title}" class="${imgClass}">`;
+
+            // 縦長バナーの場合だけアニメーション
+            if (work.isBanner) {
+    const img = tvContent.querySelector('img');
+
+    const startScroll = () => {
+        const containerH = tvContent.offsetHeight;
+        const imgH = img.offsetHeight;
+        const scrollDist = imgH - containerH;
+
+        if (scrollDist > 0) {
+            gsap.to(img, {
+                y: -scrollDist, 
+                duration: 8,    
+                ease: "none",  
+                repeat: -1,
+                yoyo: true,
+                repeatDelay: 1  
+            });
+        }
+    };
+
+    if (img.complete) {
+        startScroll();
+    } else {
+        img.onload = startScroll;
+    }
+}
+        }
+        tvTitle.innerText = work.title;
+
+        currentIndex = (currentIndex + 1) % bentoWorks.length;
+
+        setTimeout(() => {
+            tvNoise.classList.remove('is-active');
+        }, 250); //ノイズ終わり時間
+    }, 200);//画像切り替わりからノイズだけの時間
+};
+
+// 秒ごとの切り替え
+setInterval(updateBentoTV, 4800);
+
+updateBentoTV();
+
+
+
+const bentoTv = document.getElementById('bento-tv');
+
+if (bentoTv) {
+    bentoTv.addEventListener('click', (e) => {
+        e.preventDefault(); 
+
+        const targetSection = document.querySelector('.works-staff-wrapper');
+
+        if (targetSection) {
+            gsap.to(window, {
+                duration: 1, 
+                scrollTo: {
+                    y: targetSection, 
+                    autoKill: false
+                },
+                ease: "power4.inOut"
+            });
+        }
+    });
+}
+
+//--- 1.6 bento skill---------------------------------------------------------------------------
+
+
+window.addEventListener('load', () => { 
+    const skillItems = document.querySelectorAll('.skill-item');
+
+    skillItems.forEach(skillItem => {
+        const bar = skillItem.querySelector('.bar');
+        const valueDisplay = skillItem.querySelector('.value');
+        const level = bar.dataset.level;
+        const percent = parseInt(level);
+        const counter = { val: 0 };
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: skillItem, 
+                start: "top 95%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        const vibeEase = "elastic.out(2.0, 0.3)";
+
+        // バーのアニメーション
+        tl.to(bar, {
+            width: level,
+            duration: 1.5,
+            ease: vibeEase
+        }, 0);
+
+        // 数字のカウントアップアニメーション
+        tl.to(counter, {
+            val: percent,
+            duration: 1.5,
+            ease: vibeEase,
+            onUpdate: () => {
+                valueDisplay.textContent = Math.round(counter.val) + "%";
+            }
+        }, 0);
+    });
+});
+
+// --- 2. ホバーアニメーション -------------------------------------------------------------------
 const items = document.querySelectorAll('[data-gsap="hover"]');
 
 items.forEach(item => {
@@ -115,6 +272,7 @@ const tl = gsap.timeline({
 	scrollTrigger: {
 		trigger: ".works-staff-wrapper",
 		start: "top top",
+		invalidateOnRefresh: true,//スマホのサイズ変化にも対応
 	
 
 		end: () => `+=${staffTrack.scrollWidth}`,
