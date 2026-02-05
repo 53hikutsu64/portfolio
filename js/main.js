@@ -199,39 +199,54 @@ if (bentoTv) {
 window.addEventListener('load', () => { 
     const skillItems = document.querySelectorAll('.skill-item');
 
-    skillItems.forEach(skillItem => {
+    skillItems.forEach((skillItem, index) => {
         const bar = skillItem.querySelector('.bar');
         const valueDisplay = skillItem.querySelector('.value');
-        const level = bar.dataset.level;
-        const percent = parseInt(level);
-        const counter = { val: 0 };
+        const baseLevel = parseInt(bar.dataset.level); // 基準値（60, 65, 55）
+        
 
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: skillItem, 
-                start: "top 95%",
-                toggleActions: "play none none reverse"
-            }
-        });
+        function createPulse() {
+            // ランダムな変動幅（±5%〜15%）
+            const variation = gsap.utils.random(5, 35);
 
-        const vibeEase = "elastic.out(2.0, 0.3)";
+            const targetPercent = gsap.utils.random(
+                Math.max(0, baseLevel - variation), 
+                Math.min(100, baseLevel + variation)
+            );
 
-        // バーのアニメーション
-        tl.to(bar, {
-            width: level,
-            duration: 1.5,
-            ease: vibeEase
-        }, 0);
+            const duration = gsap.utils.random(0.5, 1.5);
 
-        // 数字のカウントアップアニメーション
-        tl.to(counter, {
-            val: percent,
-            duration: 1.5,
-            ease: vibeEase,
-            onUpdate: () => {
-                valueDisplay.textContent = Math.round(counter.val) + "%";
-            }
-        }, 0);
+            const eases = [
+                "power1.inOut", 
+                "power2.inOut", 
+                "elastic.out(1, 0.5)",
+                "back.inOut(1.2)"
+            ];
+            const randomEase = eases[Math.floor(Math.random() * eases.length)];
+
+            // バーのアニメ
+            gsap.to(bar, {
+                width: targetPercent + "%",
+                duration: duration,
+                ease: randomEase,
+                onComplete: createPulse // 完了したら次の脈打ち
+            });
+
+            // 数字
+            gsap.to(bar, {
+                duration: duration,
+                ease: randomEase,
+                onUpdate: function() {
+                    const currentWidth = parseFloat(getComputedStyle(bar).width);
+                    const parentWidth = parseFloat(getComputedStyle(bar.parentElement).width);
+                    const currentPercent = (currentWidth / parentWidth) * 100;
+                    valueDisplay.textContent = Math.round(currentPercent) + "%";
+                }
+            });
+        }
+
+        // 各スキルバーをランダムな遅延
+        gsap.delayedCall(index * 0.3, createPulse);
     });
 });
 
@@ -247,6 +262,17 @@ items.forEach(item => {
 			duration: 0.3,
 			ease: "power2.out"
 		});
+		
+	
+		const bars = item.querySelectorAll('.bar');
+		bars.forEach(bar => {
+			gsap.to(bar, {
+				backgroundColor: 'var(--bg)',
+				boxShadow: '0 0 8px var(--bg)',
+				duration: 0.3,
+				ease: "power2.out"
+			});
+		});
 	});
 
 	item.addEventListener('mouseleave', () => {
@@ -257,9 +283,19 @@ items.forEach(item => {
 			duration: 0.3,
 			ease: "power2.in"
 		});
+		
+	
+		const bars = item.querySelectorAll('.bar');
+		bars.forEach(bar => {
+			gsap.to(bar, {
+				backgroundColor: 'var(--text)',
+				boxShadow: '0 0 8px var(--text)',
+				duration: 0.3,
+				ease: "power2.in"
+			});
+		});
 	});
 });
-
 
 // ---横スクロールの
 
