@@ -906,59 +906,75 @@
 
 		// --- レスポンシブ -----------------------
 		@include sp {
+	.works-staff-wrapper {
+		height: 60vh !important;
+	}
 
+	.staff-lines,
+	.staff-container {
+		height: 500px; // PC版と同じ高さ維持
+	}
 
-			.staff-container {
-				height: 500px;
-				top: 50%;
-				transform: translateY(-50%);
-			}
+	.staff-track {
+		display: flex;
+		gap: 40px; // 80pxだと隙間空きすぎかも
+		padding-left: 100vw;
+		padding-right: 50vw;
+	}
 
+	.work-item {
+		flex-shrink: 0;
+		
+		// 高さはそのまま、横幅を縦幅に合わせる（正方形っぽく）
+		&.h-100 {
+			height: 100px;
+			width: 120px; // 少し横長
+		}
 
-			.work-item {
-				&:not(.finish-box) {
+		&.h-200 {
+			height: 200px;
+			width: 220px;
+		}
 
-					&.h-100 {
-						width: 120px;
-					}
+		&.h-300 {
+			height: 300px;
+			width: 320px;
+		}
 
-					&.h-200 {
-						width: 220px;
-					}
+		&.h-500 {
+			height: 500px;
+			width: 85vw; // finish-boxは画面幅に合わせる
+		}
 
-					&.h-300 {
-						width: 300px;
-					}
-
-					.work-img {
-						border: none !important;
-						background: none !important;
-					}
-				}
-			}
-
-			&.finish-box {
-				width: 85vw !important;
-				height: 502px !important;
-				margin-top: 0 !important;
-				background-color: var(--text);
-
-				p {
-					font-size: 24px;
-
-					span {
-						font-size: 40px;
-					}
-				}
-			}
-
-
-			.staff-track {
-				padding-left: 100vw;
-				padding-right: 50vw;
-				gap: 40px;
+		.work-img {
+			width: 100%;
+			height: 100%;
+			
+			img,
+			video {
+				width: 100%;
+				height: 100%;
+				object-fit: cover; // 縦横比を保ちつつトリミング
 			}
 		}
+
+		// finish-boxは特別扱い
+		&.finish-box {
+			width: 85vw !important;
+			height: 500px !important;
+			
+			p {
+				font-size: 24px;
+			}
+		}
+	}
+
+	.lane-texts-container {
+		.lane-text {
+			font-size: 40px; // スマホでは小さめに
+		}
+	}
+}
 	}
 
 
@@ -1377,34 +1393,3 @@
 	}
 
 	// -----------------------メディアクエリの微調整--------------------------------------------------
-
-
-	@include sp {
-		.works-staff-wrapper {
-			height: 60vh !important;
-		}
-
-		.staff-track {
-			display: flex;
-			gap: 80px;
-			padding: 0 5vw;
-		}
-
-		.work-item {
-			flex-shrink: 0;
-			width: auto;
-			height: auto;
-
-			// aspect-ratio: ;
-
-
-
-			img,
-			video {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-
-			}
-		}
-	}
