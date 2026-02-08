@@ -1,12 +1,189 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>about-detail-profile</title>
+	<title>ABOUT | ひくつ</title>
+	<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
 </head>
-<body>
-	Sorry!!誠意制作中！！
-	
+
+<body class="light-mode">
+	<div id="visual-frame" class="visual-frame"></div>
+
+	<div class="fixed-actions">
+		<a href="index.html" class="btn-retro sticky-back">BACK TO TOP</a>
+		<button id="nav-mode-toggle" class="mode-toggle-icon">
+			<img src="img/icon/635.png" id="mode-icon" alt="Mode">
+		</button>
+
+	</div>
+
+	<div id="site-wrapper" class="site-wrapper">
+		<header class="header">
+			<h1 class="logo">HIKUTSU / ABOUT</h1>
+		</header>
+
+		<main class="about-detail-content">
+			<section class="intro-section">
+				<span class="label">UNSPOKEN RESUME</span>
+				<h2 class="typewriter-title">履歴書にない自分のこと。</h2>
+				<div class="intro-box">
+					<p class="intro-text">
+						ここには、履歴書や職務経歴書には収められない今にいたるまでのきっかけや、趣味 好きな物事、私自身のこと などを正直に、やんわりと、置いておこうと思います。<br>
+						画面の向こう側にいるコタニという人間を、少しでも身近に感じていただけたら嬉しいです。<br>
+					</p>
+				</div>
+			</section>
+
+			<section class="manifesto-section">
+				<div class="manifesto-card">
+					<span class="label">STORY</span>
+					<h3>つくること、考えること。</h3>
+					<p>
+						基本的にはなにかをつくること全般が好きで、こんなものがあったらいいな！をベースに、なければ作る。欲しいものが売ってないから作ろう。が私です。<br><br>
+						これまで私は10年ほど、木造戸建ての大工として家を建ててきました。<br>
+						気づけば現場や人をまとめる立場になっていたり、ハウスメーカーで後進の育成を任される仕事等のお声かけをいただいたりもしました。<br><br>
+
+						そんな中、仕事の傍らに趣味で作ったものをハンドメイド系のイベントなどに出店した際に、その時のことをブログ記事としてヤフーニュースに掲載していただけた経験や、作ったものがSNSで所謂バズった経験などがありました。<br>
+						その様な結果に出ていなくとも、こんなのがあったら..や、こういうの良くない？
+						など、アイデアや考え事を生かせたら良いなぁ..なんて、心の奥ではひっそりと、ぼんやりと、後ろ髪をひかれる気持ちで生きてきていました。<br><br>
+						「そういうことを仕事にしたら？」と友人や知人に言われることも多くありましたが、「これまで黙々とやってきた人や、専門知識を学んできた人の行ける場所で、自分には縁のない世界だ」と決めつけ、やってみる！を避けてきました。
+						<br><br>しかーーーし！今回の転職を機に、自分のやりたいこと 自分にできること、そして求められること。 <br>
+						それらがより多く重なる働き方に近づければと思い、職業訓練校に通ってチャレンジをしてみることを決めました。<br><br>
+
+						当初はデザインがやりたい、向いている..と思っていましたが、実際に手を動かし、ポートフォリオにも掲載している「WorldWeather」のアプリケーションを作っている間に、ロジックを組んでアニメーションを変えたり機能を充実させたりすることにも楽しさを覚えました。<br>
+						いつか仕事だけでなく、趣味などでもゲームやアプリを作ったりすることも想像しながら、新しい「つくること」を前向きに学んでいます。<br>
+					</p>
+				</div>
+			</section>
+
+			<section class="manifesto-section">
+				<div class="manifesto-card">
+					<span class="label">WORK ETHIC</span>
+					<h3>仕事に対するスタンス</h3>
+					<p>
+						「あいさつ」は大事にしています。<br>
+						仕事は必ず人と繋がるもので、その一歩目である挨拶を大切にしてきたことで、物事が良い方向に動く経験をたくさんしてきました。<br>
+
+						また、個人の力も大切ですが、自分のロールをきっちりこなすことや、全体の力を引き出すことも大事な仕事の一部だと、人をまとめる立場に着いた時に思い至りました。<br>
+						相手に合わせた教え方や伝え方の工夫を取っても同じで、大工職をやってきた中で得たのは、家を造る技術だけでなく、こういった仕事と関わる上で必要なスキルが身に着いたのも、長く同じ職をやって得られたものかと思っています。<br>
+
+					</p>
+				</div>
+			</section>
+
+			<section class="interests-section">
+    <div class="manifesto-card"> <span class="label">INTERESTS</span>
+        <h3>好きなもの、好きなこと</h3>
+        
+        <ul class="interests-list">
+
+			<li>
+                <strong>作ること</strong>
+                <p>
+					本当に色々つくります。
+					家具を作ったり、ビーズ刺繍をしたり、コスプレを極稀にするので、その衣装や小道具であったり...etc <br>
+					後述の料理も、時間のある時には楽しんで作っています。<br>
+                    最近は上野美術館で見て以降、「装飾写本」が気になっていて、本買ったり、自分でも二次創作的な感じで、いつか真似事したいと思ってなんかもいます。<br>
+					下記の画像欄にて、近年制作したものを見ていただけると嬉しいです。
+                </p>
+            </li>
+            
+            <li>
+                <strong>バイク</strong>
+                <p>
+                    10代の頃から好きで、今はKTMのバイクに乗っています。好きゆえに、あまり人とは話しません...。<br>
+                </p>
+            </li>
+            <li>
+                <strong>本・漫画・アニメ</strong>
+                <p>
+                    本は絵本や資料っぽいものを集める癖があります。 <br>小説だと江戸川乱歩の怪奇小説が好きです。話すと長くなります。<br>漫画は結構読みます。かなり幅広く読みますが、少年誌よりは青年誌を好む傾向かもしれないです。<br>
+					アニメは最近のものはあまり見られていませんが、古い作品～カートゥーン、その他諸々、こちらも割と幅が広いです。
+                </p>
+            </li>
+			<li>
+                <strong>アウトドア</strong>
+                <p>
+                    おしゃれなキャンプというよりは野営に近いスタイルが好きで、野の物を採って食べたりします。キノコは手を出しません。鹿は捌けます。<br>
+                    海はこわいので苦手です。泳げはします。
+                </p>
+            </li>
+<li>
+                <strong>ゲーム</strong>
+                <p>
+                    近年はあまりプレイできていませんが、レトロなもの～最近のものまで好きではあります。 <br>話始めると語りたがりなところがあります。気を付けてください。 <br>
+					スマートフォン向けのゲームは、始めてしまうと身を亡ぼす未来が見えるので、あまり触りません。 <br>
+					アクション、ローグライクがジャンルで言うと好みですが、こつこつやる物も好きです。<br>
+					最近は大型タイトルよりもインディーゲームが多めです。
+                </p>
+            </li>
+			<li>
+                <strong>料理</strong>
+                <p>
+                    昔は自炊をするだけといった感じでしたが、近年はちゃんとした作り方を学んだり、お菓子を作ってみたり、和洋中からタイ、インド、ロシア料理までレシピを見ずに作れるものも多くなってきています。 <br>大きな声では言いませんが、料理は比較的ですが得意といえると思います。 <br>ほぼ毎日、昼と夜は結構ちゃんと作っています。
+                </p>
+            </li>
+            
+            
+            <li>
+                <strong>その他</strong>
+                <p>
+                    まだまだ色々と、興味のあること好きなこと、多々ございますが、<br>御覧下さった方とゆっくりお話しする機会があればうれしい限りです。
+                </p>
+            </li>
+            
+        </ul>
+    </div>
+</section>
+
+			<section class="hobbies-section">
+				<span class="label">近年作ったりしたもの</span>
+				<h2 class="section-title">WHAT I MADE</h2>
+				<div class="hobby-grid">
+					<div class="hobby-card" data-gsap="hover">
+						<div class="hobby-img"><img src="img/handmade-1.jpg" alt="コスプレ小道具"></div>
+						<h4>小道具制作</h4>
+						<p>友達に頼まれて作った小道具です。細部まで想像して形にしました。</p>
+					</div>
+					<div class="hobby-card" data-gsap="hover">
+						<div class="hobby-img"><img src="img/handmade-2.jpg" alt="ビーズ刺繍"></div>
+						<h4>ビーズ刺繍</h4>
+						<p>一つひとつ丁寧に縫い上げた刺繍作品です。</p>
+					</div>
+					<div class="hobby-card" data-gsap="hover">
+						<div class="hobby-img"><img src="img/cooking-1.jpg" alt="手作りお菓子"></div>
+						<h4>創作菓子</h4>
+						<p>見た目の可愛さにもこだわった手作りのお菓子です。</p>
+					</div>
+					<div class="hobby-card" data-gsap="hover">
+						<div class="hobby-img"><img src="img/diy-1.jpg" alt="加工家具"></div>
+						<h4>家具・服の加工</h4>
+						<p>「売っていないなら作ろう」のノリで加工した作品たちです。</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="thanks-section">
+				<h2 class="thanks-text">Thank you for reading!</h2>
+			</section>
+		</main>
+
+		<footer class="footer">
+			<div class="footer-inner">
+				<p class="copyright">&copy; 2026 ひくつ. ALL RIGHTS RESERVED.</p>
+			</div>
+		</footer>
+	</div>
+
+	<script src="js/about.js"></script>
 </body>
+
 </html>

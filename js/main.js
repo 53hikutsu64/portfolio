@@ -1,6 +1,5 @@
-// --- ---
-
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin);
+
 
 const loadingTl = gsap.timeline();
 
@@ -45,33 +44,47 @@ loadingTl.to(["#visual-frame", "#site-wrapper"], {
 		ScrollTrigger.refresh();
 	}
 });
-// --- 1. ダークモードライトモード ---
+// --- 1. ダークモードライトモード -------------------------------------------------------------------
+
+
 const modeToggle = document.getElementById('mode-toggle');
 const navModeToggle = document.getElementById('nav-mode-toggle');
 
 const updateModeUI = () => {
-	const isDark = document.body.classList.contains('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    const icon = document.getElementById('mode-icon');
 
-	// ① ヘッダーボタンテキスト更新
-	if (modeToggle) {
-		modeToggle.textContent = isDark ? "LIGHT MODE" : "DARK MODE";
-	}
+    if (modeToggle) {
+        modeToggle.textContent = isDark ? "LIGHT MODE" : "DARK MODE";
+    }
 
-	// ② ナビアイコンの更新
-	if (navModeToggle) {
-		navModeToggle.textContent = isDark ? "☀️" : "🌙";
-	}
+    if (icon) {
+        icon.src = isDark ? '../img/icon/637.png' : '../img/icon/635.png';
+    }
 };
 
-// 共通の切り替え
 const toggleMode = () => {
-	document.body.classList.toggle('dark-mode');
-	updateModeUI();
+    const icon = document.getElementById('mode-icon');
+    const isDarkNow = document.body.classList.contains('dark-mode');
 
-	
-	gsap.fromTo("body", { opacity: 0.8 }, { opacity: 1, duration: 0.4 });
+    if (icon) {
+        gsap.to(icon, {
+            rotation: "+=360", // 押すたびにプラス360度
+            duration: 0.5,
+            ease: "power2.inOut",
+            onStart: () => {
+                setTimeout(() => {
+                    icon.src = isDarkNow ? '../img/icon/635.png' : '../img/icon/637.png';
+                }, 200);
+            }
+        });
+    }
+
+    document.body.classList.toggle('dark-mode');
+    updateModeUI();
+
+    gsap.fromTo("body", { opacity: 0.8 }, { opacity: 1, duration: 0.4 });
 };
-
 
 if (modeToggle) modeToggle.addEventListener('click', toggleMode);
 if (navModeToggle) navModeToggle.addEventListener('click', toggleMode);
@@ -196,7 +209,7 @@ if (bentoTv) {
 //--- 1.6 bento skill---------------------------------------------------------------------------
 
 
-window.addEventListener('load', () => { 
+addEventListener('load', () => { 
     const skillItems = document.querySelectorAll('.skill-item');
 
     skillItems.forEach((skillItem, index) => {
@@ -206,7 +219,7 @@ window.addEventListener('load', () => {
         
 
         function createPulse() {
-            // ランダムな変動幅（±5%〜15%）
+            // ランダムな変動幅（±5〜35）
             const variation = gsap.utils.random(5, 35);
 
             const targetPercent = gsap.utils.random(
@@ -250,7 +263,7 @@ window.addEventListener('load', () => {
     });
 });
 
-// --- 2. ホバーアニメーション -------------------------------------------------------------------
+// --- 2　ホバーアニメーション -------------------------------------------------------------------
 const items = document.querySelectorAll('[data-gsap="hover"]');
 
 items.forEach(item => {
@@ -330,7 +343,7 @@ tl.to(staffTrack, {
 	ease: "none"
 }, 0);
 
-// パララックス・テキスト
+// パララックステキスト
 laneTexts.forEach(text => {
 	const speed = parseFloat(text.getAttribute('data-speed')) || 0.3;
 	tl.to(text, {
@@ -340,7 +353,7 @@ laneTexts.forEach(text => {
 });
 
 
-// --- 4モーダル開閉アニメ----------------------------------------------------------------------------
+// --- 4　モーダル開閉アニメ----------------------------------------------------------------------------
 
 const modalOverlay = document.getElementById('modal-overlay');
 const modalWindow = document.querySelector('.modal-window');
@@ -352,14 +365,14 @@ const workItems = document.querySelectorAll('.work-item');
 
 workItems.forEach(item => {
     item.addEventListener('click', () => {
-        // --- 1. データの取得 ---
-        const descText = item.getAttribute('data-desc') || "説明文は準備中だドン！";
-        const techText = item.getAttribute('data-tech') || "技術スタックは内緒だぜ";
+        // --- 1　データの取得 ---
+        const descText = item.getAttribute('data-desc') || "説明文は準備中！";
+        const techText = item.getAttribute('data-tech') || "技術は内緒だぜ";
         const caseUrl = item.getAttribute('data-case-url');
         const siteUrl = item.getAttribute('data-site-url');
         const projectTitle = item.getAttribute('data-title');
 
-        const modalImgArea = document.getElementById('modal-image-area');
+        const modalImgArea = document.getElementById('modal-image-area');	
         const titleEl = document.getElementById('modal-title');
         const descEl = document.getElementById('modal-desc');
         const techEl = document.getElementById('modal-tech');
@@ -367,15 +380,14 @@ workItems.forEach(item => {
         const img = item.querySelector('img');
         const video = item.querySelector('video');
 
-        // --- 2. モーダルの中身を書き換え ---
+        // --- 2　モーダルの中身を書き換え ---
 
-        // ★ タイトルの決定（優先順位：data-title > img.alt > h3タグ > 'WORK DETAIL'）
         if (titleEl) {
             const h3Text = item.querySelector('h3') ? item.querySelector('h3').innerText : '';
             titleEl.innerText = projectTitle || (img ? img.alt : (h3Text || 'WORK DETAIL'));
         }
 
-        // 画像 or 動画の表示（ここは完璧だドン！）
+        // 画像 動画の表
         if (modalImgArea) {
             modalImgArea.innerHTML = '';
             if (video) {
@@ -389,11 +401,11 @@ workItems.forEach(item => {
             }
         }
 
-        // 説明文と技術スタックの更新
+        // 説明文の更新
         if (descEl) descEl.innerHTML = descText;
         if (techEl) techEl.innerText = techText;
 
-        // ボタンのリンクと表示（ここも「ぱーでき」！）
+        // ボタン表示
         const caseBtn = document.getElementById('modal-case-link');
         const siteBtn = document.getElementById('modal-site-link');
 
@@ -406,7 +418,7 @@ workItems.forEach(item => {
             siteBtn.style.display = siteUrl ? "inline-block" : "none";
         }
 
-        // --- 3. モーダルを表示する演出 ---
+        // --- 3　モーダルを表示 ---
         if (modalOverlay && modalWindow) {
             modalOverlay.style.display = 'flex';
             gsap.fromTo(modalWindow,
@@ -434,7 +446,7 @@ if (modalOverlay) modalOverlay.addEventListener('click', (e) => {
 });
 
 
-// --- 5. 文字シャッフル＆タイピング魔法 ---
+// --- 5　文字シャッフル ---
 
 const decodeText = (el, finalValue) => {
 
@@ -479,7 +491,7 @@ setInterval(() => {
 }, 4000);
 
 
-// --- 6. Bento Gridのシャッフル ---
+// --- 6Bento Gridのシャッフル ---
 const runBentoShuffle = () => {
 	
 	const labels = document.querySelectorAll('.bento-item .label');
@@ -498,7 +510,7 @@ window.addEventListener('load', () => {
 });
 
 
-// --- 7. ナビゲーション＆スクロール ---
+// --- 7 ナビゲーション、スクロール ---
 
 
 const floatingNav = document.querySelector('.floating-nav');
