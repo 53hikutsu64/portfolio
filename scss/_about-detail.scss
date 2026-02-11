@@ -1,0 +1,390 @@
+.about-detail-content {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding-bottom: 120px;
+
+	.intro-section {
+		margin-top: 60px;
+		margin-bottom: 100px;
+		text-align: center;
+
+		h2 {
+			font-size: 3rem;
+			margin: 10px 0;
+			border-bottom: 4px solid var(--text);
+			display: inline-block;
+			min-height: 1.2em;
+			margin-bottom: 50px;
+
+			@media (max-width: 768px) {
+				font-size: 2rem;
+			}
+		}
+
+		.label {
+			display: block;
+			font-size: 1rem;
+			letter-spacing: 0.3em;
+		}
+	}
+
+	.manifesto-section {
+		margin-bottom: 120px;
+
+		.manifesto-card {
+			border: 4px solid var(--text);
+			padding: 50px;
+			background-color: var(--bg);
+			box-shadow: 12px 12px 0 var(--text);
+
+			h3 {
+				font-size: 3rem;
+				margin-top: 0;
+				text-decoration: underline;
+				margin-bottom: 40px;
+			}
+
+			@media (max-width: 768px) {
+				padding: 25px;
+			}
+		}
+	}
+
+	.history-section {
+		margin-bottom: 120px;
+
+		.timeline {
+			position: relative;
+			padding: 50px 0;
+
+			.timeline-line {
+				position: absolute;
+				top: 0;
+				left: 20px;
+				width: 2px;
+				background: var(--text);
+				height: 0;
+			}
+
+			.timeline-item {
+				position: relative;
+				padding-left: 60px;
+				margin-bottom: 80px;
+				opacity: 0;
+				transform: translateX(40px);
+
+				&::before {
+					content: "";
+					position: absolute;
+					left: 13px;
+					top: 12px;
+					width: 16px;
+					height: 16px;
+					background: var(--bg);
+					border: 2px solid var(--text);
+					border-radius: 50%;
+					z-index: 2;
+				}
+
+				h4 {
+					background: var(--text);
+					color: var(--bg);
+					display: inline-block;
+					padding: 5px 15px;
+					margin: 15px 0;
+					font-size: 1.4rem;
+				}
+			}
+		}
+	}
+
+
+
+	.interests-list {
+		margin: 40px 0 0;
+
+		li {
+			margin-bottom: 40px;
+			border-left: 2px solid var(--text);
+			padding-left: 20px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			strong {
+				font-size: 1.3rem;
+				display: block;
+				margin-bottom: 10px;
+				background: var(--text);
+				color: var(--bg);
+				padding: 2px 10px;
+				width: fit-content;
+			}
+
+			p {
+				margin: 0;
+				line-height: 2;
+			}
+		}
+	}
+
+
+	.hobbies-section {
+		margin: 60px 0;
+
+		.hobby-grid {
+			// --- ここを grid から column に変更 ---
+			display: block;
+			column-count: 4; // 横に並べる列数
+			column-gap: 20px; // 横の隙間
+			margin-top: 40px;
+
+			@media (max-width: 1024px) {
+				column-count: 3;
+			}
+
+			@media (max-width: 768px) {
+				column-count: 2;
+			}
+
+			.hobby-card {
+				// --- column 内でカードがちぎれないように設定 ---
+				display: inline-block;
+				width: 100%;
+				break-inside: avoid; // 列の途中でカードが分割されるのを防ぐ
+				margin-bottom: 20px; // 縦の隙間
+
+				border: 2px solid var(--text);
+				padding: 12px;
+				background: var(--bg);
+				opacity: 0;
+				transform: translateY(30px);
+				cursor: pointer;
+				transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+				&:hover {
+					transform: scale(1.05) rotate(1deg);
+					box-shadow: 8px 8px 0 var(--text);
+				}
+
+				.hobby-img {
+					width: 100%;
+					// aspect-ratio: 1 / 1; // ←これがあると正方形になっちゃうから消すぞ！
+					background: var(--bar-bg);
+					overflow: hidden;
+					margin-bottom: 15px;
+					border: 1px solid var(--text);
+
+					img {
+						width: 100%;
+						height: auto; // ←高さは画像に合わせるぞ
+						display: block; // 下に謎の隙間ができないように
+						transition: transform 0.5s ease;
+					}
+				}
+
+				&:hover .hobby-img img {
+					transform: scale(1.1);
+				}
+			}
+		}
+	}
+}
+
+
+.fixed-actions {
+	position: fixed;
+	top: 40px;
+	right: 40px;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	z-index: 3000;
+
+	@media (max-width: 768px) {
+		top: 25px;
+		right: 25px;
+		gap: 10px;
+	}
+
+
+	.mode-toggle-icon {
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		display: flex;
+		align-items: center;
+
+		img {
+			width: 30px;
+			height: 30px;
+		}
+	}
+}
+
+// モーダル
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	display: none;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+
+
+	.modal-window {
+		background: var(--bg);
+		margin: auto;
+		border: 4px solid var(--text);
+		width: 100%;
+		max-width: 700px;
+		padding: 40px;
+		position: relative;
+		box-shadow: 10px 10px 0 var(--text);
+
+		.modal-inner {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 20px;
+
+			@media (max-width: 600px) {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		.modal-close-btn {
+			position: absolute;
+			top: -20px;
+			right: -20px;
+			width: 40px;
+			height: 40px;
+			background: var(--text);
+			color: var(--bg);
+			border: none;
+			cursor: pointer;
+			font-weight: bold;
+		}
+	}
+}
+
+.modal-dots {
+	display: flex;
+	gap: 8px;
+	margin-top: 15px;
+	justify-content: flex-start;
+}
+
+.thumb {
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	overflow: hidden;
+	opacity: 0.6;
+	transition: 0.3s;
+}
+
+.thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.thumb.active {
+	border-color:var(--text) ;
+	opacity: 1;
+}
+
+.thumb:hover {
+	opacity: 1;
+}
+
+
+
+.visual-frame {
+
+	@media (max-width: 768px) {
+		display: none !important;
+	}
+}
+
+.site-wrapper {
+
+
+	@media (max-width: 768px) {
+		padding: 15px;
+		clip-path: none !important;
+	}
+}
+
+
+
+.prev-btn,
+.next-btn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	color: white;
+	border: none;
+	font-size: 3rem;
+	cursor: pointer;
+	transition: 0.3s;
+	padding: 10px;
+	z-index: 10;
+}
+
+.prev-btn {
+	left: -60px;
+}
+
+.next-btn {
+	right: -60px;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+	color: #4f6671;
+	transform: translateY(-50%) scale(1.1);
+}
+
+@media (max-width: 900px) {
+	.prev-btn {
+		left: 10px;
+	}
+
+	.next-btn {
+		right: 10px;
+	}
+
+	.prev-btn,
+	.next-btn {
+		background: rgba(0, 0, 0, 0.3);
+		border-radius: 50%;
+		font-size: 1.5rem;
+	}
+}
+
+//---------------------------------------------------------------------------------------------
+.thanks-section {
+	padding: 70px 20px;
+	text-align: center;
+	min-height: 400px;
+
+	.thanks-text {
+		font-size: 4rem; // 
+		font-weight: bold;
+		display: inline-block;
+
+		@media (max-width: 768px) {
+			font-size: 2.5rem;
+		}
+	}
+}

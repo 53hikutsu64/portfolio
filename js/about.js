@@ -85,11 +85,108 @@ window.addEventListener('load', () => {
 });
 
 
+//------------------------------ホビーカード------------------------------------------
+let allCards = [];
+let currentCardIndex = 0;
+let currentImgIndex = 0;
+let currentImages = [];
+let currentTitles = [];
+let currentDescs = [];
 
+window.addEventListener('load', () => {
+    const modal = document.getElementById('hobby-modal');
+    allCards = Array.from(document.querySelectorAll('.hobby-card'));
 
+    const loadCardData = (index) => {
+        currentCardIndex = index;
+        const card = allCards[currentCardIndex];
+        currentImages = card.dataset.images.split(',');
+        currentTitles = card.dataset.titles.split(',');
+        currentDescs = card.dataset.descs.split(',');
+        
+        document.getElementById('modal-title').innerText = card.querySelector('h4').innerText;
+    };
 
+    const openCardModal = (cardIdx, imgIdx = 0) => {
+        loadCardData(cardIdx);
+        currentImgIndex = imgIdx;
+        updateModalContent();
+        
+        modal.style.display = "flex";
+        gsap.fromTo(".modal-window", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out" });
+    };
 
+    allCards.forEach((card, index) => {
+        card.addEventListener('click', () => openCardModal(index, 0));
+    });
 
+    document.querySelector('.next-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentImgIndex++;
+
+        if (currentImgIndex >= currentImages.length) {
+            // 次のカード
+            currentCardIndex = (currentCardIndex + 1) % allCards.length;
+            loadCardData(currentCardIndex);
+            currentImgIndex = 0; 
+        }
+        updateModalContent();
+    });
+
+    document.querySelector('.prev-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentImgIndex--;
+
+        if (currentImgIndex < 0) {
+            // 前のカード
+            currentCardIndex = (currentCardIndex - 1 + allCards.length) % allCards.length;
+            loadCardData(currentCardIndex);
+            currentImgIndex = currentImages.length - 1; 
+        }
+        updateModalContent();
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+});
+
+function updateModalContent() {
+    const imgArea = document.getElementById('modal-image-area');
+    const titleArea = document.getElementById('modal-sub-title');
+    const descArea = document.getElementById('modal-desc');
+
+    gsap.to([imgArea, titleArea, descArea], {
+        opacity: 0, duration: 0.2, onComplete: () => {
+            imgArea.innerHTML = `<img src="${currentImages[currentImgIndex]}" style="width:100%; height:auto; border-radius:8px;">`;
+            titleArea.innerText = currentTitles[currentImgIndex];
+            descArea.innerHTML = currentDescs[currentImgIndex];
+
+            gsap.to([imgArea, titleArea, descArea], { opacity: 1, duration: 0.3 });
+            
+            updateThumbnails();
+        }
+    });
+}
+
+function updateThumbnails() {
+    const dotsContainer = document.getElementById('modal-dots');
+    dotsContainer.innerHTML = currentImages.map((img, i) => 
+        `<div class="thumb ${i === currentImgIndex ? 'active' : ''}" onclick="jumpToImage(${i})">
+            <img src="${img}" alt="thumb">
+        </div>`
+    ).join('');
+}
+
+jumpToImage = (index) => {
+    currentImgIndex = index;
+    updateModalContent();
+};
+
+function closeModal() {
+    const modal = document.getElementById('hobby-modal');
+    gsap.to(".modal-window", { scale: 0.8, opacity: 0, duration: 0.3, onComplete: () => { modal.style.display = "none"; } });
+}
 
 
 
