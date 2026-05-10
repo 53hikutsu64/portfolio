@@ -158,9 +158,21 @@ function updateModalContent() {
 
     gsap.to([imgArea, titleArea, descArea], {
         opacity: 0, duration: 0.2, onComplete: () => {
-            imgArea.innerHTML = `<img src="${currentImages[currentImgIndex]}" style="width:100%; height:auto; border-radius:8px;">`;
-            titleArea.innerText = currentTitles[currentImgIndex];
-            descArea.innerHTML = currentDescs[currentImgIndex];
+            const src = currentImages[currentImgIndex];
+            
+            // 動画かどうか判定（mp4, webm, mov など）
+            const isVideo = src.match(/\.(mp4|webm|mov)$/i);
+
+            if (isVideo) {
+                // 動画用HTML
+                imgArea.innerHTML = `<video src="${src}" autoplay loop muted playsinline style="width:100%; height:auto; border-radius:8px;"></video>`;
+            } else {
+                // 画像用HTML
+                imgArea.innerHTML = `<img src="${src}" style="width:100%; height:auto; border-radius:8px;">`;
+            }
+
+            titleArea.innerText = currentTitles[currentImgIndex] || "";
+            descArea.innerHTML = currentDescs[currentImgIndex] || "";
 
             gsap.to([imgArea, titleArea, descArea], { opacity: 1, duration: 0.3 });
             
@@ -171,11 +183,18 @@ function updateModalContent() {
 
 function updateThumbnails() {
     const dotsContainer = document.getElementById('modal-dots');
-    dotsContainer.innerHTML = currentImages.map((img, i) => 
-        `<div class="thumb ${i === currentImgIndex ? 'active' : ''}" onclick="jumpToImage(${i})">
-            <img src="${img}" alt="thumb">
-        </div>`
-    ).join('');
+    dotsContainer.innerHTML = currentImages.map((img, i) => {
+        const isVideo = img.match(/\.(mp4|webm|mov)$/i);
+        
+        // 動画の場合はサムネイルとして動画を表示
+        const thumbElement = isVideo 
+            ? `<video src="${img}" muted playsinline></video>` 
+            : `<img src="${img}" alt="thumb">`;
+
+        return `<div class="thumb ${i === currentImgIndex ? 'active' : ''}" onclick="jumpToImage(${i})">
+            ${thumbElement}
+        </div>`;
+    }).join('');
 }
 
 jumpToImage = (index) => {
