@@ -472,14 +472,14 @@ ScrollTrigger.create({
 		const nameEl = document.querySelector('.about-name');
 		const bioEl = document.querySelector('.about-bio');
 		if (nameEl) decodeText(nameEl, "SYUNSUKE KOTANI");
-		if (bioEl) decodeText(bioEl, "東京(郊外)生まれ、東京(もっと郊外)育ち。<br>2025年8月より職業訓練校にてWebデザインやコーディングについて学ぶ。");
+		if (bioEl) decodeText(bioEl, "東京(郊外)生まれ、東京(もっと郊外)育ち。<br>2025年8月より職業訓練校にてWebデザインやコーディングについて学ぶ。<br>考えること、趣味などをまとめたので、VIEW MORE をさわっていただけると幸いです。");
 	},
 	
 	onEnterBack: () => {
 		const nameEl = document.querySelector('.about-name');
 		const bioEl = document.querySelector('.about-bio');
 		if (nameEl) decodeText(nameEl, "SYUNSUKE KOTANI");
-		if (bioEl) decodeText(bioEl, "東京(郊外)生まれ、東京(もっと郊外)育ち。<br>2025年8月より職業訓練校にてWebデザインやコーディングについて学ぶ。");
+		if (bioEl) decodeText(bioEl, "東京(郊外)生まれ、東京(もっと郊外)育ち。<br>2025年8月より職業訓練校にてWebデザインやコーディングについて学ぶ。<br>考えること、趣味などをまとめたので、VIEW MORE をさわっていただけると幸いです。");
 	},
 	once: false 
 });

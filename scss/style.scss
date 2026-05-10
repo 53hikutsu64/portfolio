@@ -227,112 +227,123 @@
 
 	/* --- フローティングナビ --- */
 	.floating-nav {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    z-index: 3000;
+		position: fixed;
+		top: 20px;
+		left: 50%;
+		transform: translateX(-50%) translateY(20px);
+		z-index: 3000;
 
-    background-color: var(--bg);
-    border: 2px solid var(--text);
-    padding: 8px;
-    border-radius: 2px;
+		background-color: var(--bg);
+		border: 2px solid var(--text);
+		padding: 8px;
+		border-radius: 2px;
 
-    opacity: 0;
-    visibility: hidden;
-    transition: transform 0.4s ease;
-    max-width: 95%;
+		opacity: 0;
+		visibility: hidden;
+		transition: transform 0.4s ease;
+		max-width: 95%;
 
-    .nav-list {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        flex-wrap: nowrap;
-    }
+		.nav-list {
+			display: flex;
+			align-items: center;
+			gap: 5px;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			flex-wrap: nowrap;
+		}
 
-    .nav-item {
-        color: var(--text);
-        text-decoration: none;
-        padding: 10px 20px;
-        border-radius: 4px;
-        font-size: 14px;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        height: 45px;
-        box-sizing: border-box;
-        white-space: nowrap;
-        flex-shrink: 0;
+		.nav-item {
+			color: var(--text);
+			text-decoration: none;
+			padding: 10px 20px;
+			border-radius: 4px;
+			font-size: 14px;
+			font-weight: bold;
+			display: flex;
+			align-items: center;
+			height: 45px;
+			box-sizing: border-box;
+			white-space: nowrap;
+			flex-shrink: 0;
 
-        // PC版では通常表示
-        .full-text { display: inline; }
-        .short-text { display: none; }
+			// PC版では通常表示
+			.full-text {
+				display: inline;
+			}
 
-        &.active {
-            background-color: var(--text);
-            color: var(--bg);
-        }
-    }
+			.short-text {
+				display: none;
+			}
 
-    @include sp {
-        width: 98%;
-        padding: 3px;
-        
-        .nav-list {
-            gap: 2px;
-            justify-content: center;
-        }
+			&.active {
+				background-color: var(--text);
+				color: var(--bg);
+			}
+		}
 
-        .nav-item {
-            padding: 5px 7px;
-            font-size: 8px;
-            height: 28px;
-            
-            // スマホ用の短縮表示
-            .full-text { display: none; }
-            .short-text { display: inline; }
-        }
+		@include sp {
+			width: 98%;
+			padding: 3px;
 
-        .mode-toggle-icon {
-            height: 28px;
-            padding: 5px 7px;
-            
-            img {
-                width: 12px;
-                height: 12px;
-            }
-        }
-    }
-}
+			.nav-list {
+				gap: 2px;
+				justify-content: center;
+			}
 
-/* モード切替アイコン専用スタイル */
-.mode-toggle-icon {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    height: 45px;
-    box-sizing: border-box;
-    outline: none;
-    flex-shrink: 0;
+			.nav-item {
+				padding: 5px 7px;
+				font-size: 8px;
+				height: 28px;
 
-    img {
-        display: block;
-        width: 22px;
-        height: 22px;
-        transition: filter 0.3s ease;
-    }
+				// スマホ用の短縮表示
+				.full-text {
+					display: none;
+				}
 
-    &:hover {
-        transform: rotate(15deg);
-    }
-}
+				.short-text {
+					display: inline;
+				}
+			}
+
+			.mode-toggle-icon {
+				height: 28px;
+				padding: 5px 7px;
+
+				img {
+					width: 12px;
+					height: 12px;
+				}
+			}
+		}
+	}
+
+	/* モード切替アイコン専用スタイル */
+	.mode-toggle-icon {
+		background: none;
+		border: none;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 10px 20px;
+		height: 45px;
+		box-sizing: border-box;
+		outline: none;
+		flex-shrink: 0;
+
+		img {
+			display: block;
+			width: 22px;
+			height: 22px;
+			transition: filter 0.3s ease;
+		}
+
+		&:hover {
+			transform: rotate(15deg);
+		}
+	}
+
 	// ---------------------hero----------------------------------------------------------
 	.bento-wrapper {
 		padding: 20px;
@@ -351,7 +362,8 @@
 			grid-auto-rows: 150px;
 		}
 
-		.samurai{background: var(--bg);
+		.samurai {
+			background: var(--bg);
 			border: 2px solid var(--text);
 			position: relative;
 			overflow: hidden;
@@ -359,7 +371,10 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-		>img{border: 2px solid var(--text);}
+
+			>img {
+				border: 2px solid var(--text);
+			}
 		}
 
 		.bento-item {
@@ -712,6 +727,25 @@
 			font-size: 18px;
 			margin-bottom: 30px;
 		}
+
+		.click {
+			text-align: center;
+			padding: 8px;
+			color: #fd0202;
+		}
+		@keyframes blinking {
+				0% {
+					opacity: 0;
+				}
+
+				100% {
+					opacity: 1;
+				}
+			}
+
+			.click{
+				animation: blinking 1s ease-in-out infinite alternate;
+			}
 	}
 
 	.about-details {
@@ -1455,4 +1489,3 @@
 			color: var(--text);
 		}
 	}
-
